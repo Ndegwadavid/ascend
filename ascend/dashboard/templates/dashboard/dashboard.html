@@ -1,0 +1,96 @@
+{% extends "dashboard/base.html" %}
+{% load static %}
+
+{% block title %}Dashboard - Ascend{% endblock %}
+
+{% block content %}
+<div class="dashboard">
+    <section class="top-widgets">
+        <div class="widget" id="bal">
+            <h2>Balance</h2>
+            <p class="balance">$10,245.67</p>
+            <p class="change positive">+2.5% <i class="fas fa-arrow-up"></i></p>
+        </div>
+        <div class="widget" id="my-assets">
+            <h2>My Assets</h2>
+            <ul class="asset-list">
+                <li><span class="asset-name">Bitcoin</span> <span class="asset-value">$5,230.45</span></li>
+                <li><span class="asset-name">Ethereum</span> <span class="asset-value">$2,180.22</span></li>
+                <li><span class="asset-name">Stocks</span> <span class="asset-value">$2,835.00</span></li>
+            </ul>
+        </div>
+        <div class="widget" id="geonames">
+            <h2>GeoNames</h2>
+            <p>Active in 5 countries</p>
+            <div class="geo-chart">
+                <!-- Placeholder for a chart or map -->
+                <img src="{% static 'images/geo-chart-placeholder.png' %}" alt="Geographic distribution chart">
+            </div>
+        </div>
+    </section>
+    <section class="main-widgets">
+        <div class="widget large" id="portfolio">
+            <h2>Portfolio Performance</h2>
+            <div class="chart-container">
+                <!-- Placeholder for a line chart -->
+                <img src="{% static 'images/portfolio-chart-placeholder.png' %}" alt="Portfolio performance chart">
+            </div>
+        </div>
+        <div class="widget" id="trending">
+            <h2>Trending</h2>
+            <ul class="trending-list">
+                <li><i class="fas fa-arrow-up"></i> AAPL <span class="trend-value">+1.2%</span></li>
+                <li><i class="fas fa-arrow-down"></i> GOOGL <span class="trend-value">-0.8%</span></li>
+                <li><i class="fas fa-arrow-up"></i> TSLA <span class="trend-value">+2.5%</span></li>
+            </ul>
+        </div>
+        <div class="widget large" id="investments">
+            <h2>Recent Investments</h2>
+            <table class="investment-table">
+                <thead>
+                    <tr>
+                        <th>Date</th>
+                        <th>Asset</th>
+                        <th>Amount</th>
+                        <th>Status</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td>2024-08-08</td>
+                        <td>Bitcoin</td>
+                        <td>$1,000</td>
+                        <td><span class="status completed">Completed</span></td>
+                    </tr>
+                    <tr>
+                        <td>2024-08-07</td>
+                        <td>AAPL Stock</td>
+                        <td>$500</td>
+                        <td><span class="status pending">Pending</span></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+        <div class="widget" id="activities">
+            <h2>Recent Activities</h2>
+            <ul class="activity-list">
+                <li><i class="fas fa-exchange-alt"></i> Transferred $200 to Savings</li>
+                <li><i class="fas fa-shopping-cart"></i> Purchased 0.5 ETH</li>
+                <li><i class="fas fa-user-plus"></i> Referred John Doe</li>
+            </ul>
+        </div>
+        <div class="widget" id="live-feed">
+            <h2>Live Feed</h2>
+            <ul class="feed-list">
+                <li>Bitcoin price surges to $45,000</li>
+                <li>New investment opportunity: Green Energy ETF</li>
+                <li>Market closing summary: NASDAQ up by 1.2%</li>
+            </ul>
+        </div>
+    </section>
+</div>
+{% endblock %}
+
+{% block extra_js %}
+<script src="{% static 'js/dashboard.js' %}"></script>
+{% endblock %}

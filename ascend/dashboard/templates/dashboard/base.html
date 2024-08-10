@@ -1,0 +1,83 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>{% block title %}Ascend Dashboard{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+    {% block extra_css %}{% endblock %}
+</head>
+<body>
+    <div class="container">
+        <aside class="sidebar">
+            <h1>Ascend</h1>
+            <nav>
+                <ul>
+                    <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
+                    <li><a href="#"><i class="fas fa-chart-line"></i> Investment</a></li>
+                    <li><a href="#"><i class="fas fa-wallet"></i> Wallet</a></li>
+                    <li><a href="#"><i class="fas fa-chart-bar"></i> Analytics</a></li>
+                    <li><a href="#"><i class="fas fa-file-invoice"></i> Invoice</a></li>
+                    <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
+                    <li><a href="#"><i class="fas fa-user-plus"></i> Referral</a></li>
+                    <li><a href="#"><i class="fas fa-headset"></i> Support</a></li>
+                    <li><a href="#"><i class="fas fa-history"></i> History</a></li>
+                </ul>
+            </nav>
+        </aside>
+        <main>
+            <header>
+                <div class="new-search-bar">
+                    <input type="text" name="search-text" class="new-input" required="" placeholder="Search...">
+                    <div class="new-icon">
+                        <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512">
+                            <title>Search</title>
+                            <path d="M221.09 64a157.09 157.09 0 10157.09 157.09A157.1 157.1 0 00221.09 64z" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"></path>
+                            <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32" d="M338.29 338.29L448 448"></path>
+                        </svg>
+                    </div>
+                </div>
+                
+            
+                <div class="user-actions">
+                    <button class="notification">
+                        <i class="fas fa-bell"></i>
+                    </button>
+                    <div class="user-profile">
+                        <button id="accountDropdown">
+                            <i class="fas fa-user-circle"></i>
+                        </button>
+                        <div class="dropdown-content">
+                            <a href="#"><i class="fas fa-user"></i> Profile</a>
+                            <a href="#"><i class="fas fa-cog"></i> Preferences</a>
+                            <form method="post" action="{% url 'logout_view' %}">
+                                {% csrf_token %}
+                                <button type="submit" class="logout-btn">
+                                    <img src="{% static 'images/logout.png' %}" alt="Logout"> Logout
+                                </button>
+                            </form>
+                        </div>
+                    </div>
+                </div>
+            </header>            
+            <div id="content">
+                {% block content %}
+                <!-- Content will be injected here by child templates -->
+                {% endblock %}
+            </div>
+            <footer>
+                <nav>
+                    <a href="#">Blog</a>
+                    <a href="#" target="_blank">LinkedIn</a>
+                    <a href="#">About Us</a>
+                    <a href="#">Contact Us</a>
+                </nav>
+            </footer>
+        </main>
+    </div>
+    <script src="{% static 'js/main.js' %}"></script>
+    {% block extra_js %}{% endblock %}
+</body>
+</html>
