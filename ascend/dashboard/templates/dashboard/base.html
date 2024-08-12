@@ -1,83 +1,120 @@
 {% load static %}
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>{% block title %}Ascend Dashboard{% endblock %}</title>
-    <link rel="stylesheet" href="{% static 'css/dashboard.css' %}">
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
-    {% block extra_css %}{% endblock %}
+    <title>{% block title %}Ascend Investment Platform{% endblock %}</title>
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'css/dashboard1.css' %}">
+    <link href='https://unpkg.com/boxicons@2.1.1/css/boxicons.min.css' rel='stylesheet'>
 </head>
 <body>
-    <div class="container">
-        <aside class="sidebar">
-            <h1>Ascend</h1>
-            <nav>
-                <ul>
-                    <li><a href="#"><i class="fas fa-home"></i> Home</a></li>
-                    <li><a href="#"><i class="fas fa-chart-line"></i> Investment</a></li>
-                    <li><a href="#"><i class="fas fa-wallet"></i> Wallet</a></li>
-                    <li><a href="#"><i class="fas fa-chart-bar"></i> Analytics</a></li>
-                    <li><a href="#"><i class="fas fa-file-invoice"></i> Invoice</a></li>
-                    <li><a href="#"><i class="fas fa-cog"></i> Settings</a></li>
-                    <li><a href="#"><i class="fas fa-user-plus"></i> Referral</a></li>
-                    <li><a href="#"><i class="fas fa-headset"></i> Support</a></li>
-                    <li><a href="#"><i class="fas fa-history"></i> History</a></li>
-                </ul>
-            </nav>
-        </aside>
-        <main>
-            <header>
-                <div class="new-search-bar">
-                    <input type="text" name="search-text" class="new-input" required="" placeholder="Search...">
-                    <div class="new-icon">
-                        <svg xmlns="http://www.w3.org/2000/svg" class="ionicon" viewBox="0 0 512 512">
-                            <title>Search</title>
-                            <path d="M221.09 64a157.09 157.09 0 10157.09 157.09A157.1 157.1 0 00221.09 64z" fill="none" stroke="currentColor" stroke-miterlimit="10" stroke-width="32"></path>
-                            <path fill="none" stroke="currentColor" stroke-linecap="round" stroke-miterlimit="10" stroke-width="32" d="M338.29 338.29L448 448"></path>
-                        </svg>
-                    </div>
-                </div>
-                
-            
-                <div class="user-actions">
-                    <button class="notification">
-                        <i class="fas fa-bell"></i>
-                    </button>
-                    <div class="user-profile">
-                        <button id="accountDropdown">
-                            <i class="fas fa-user-circle"></i>
-                        </button>
-                        <div class="dropdown-content">
-                            <a href="#"><i class="fas fa-user"></i> Profile</a>
-                            <a href="#"><i class="fas fa-cog"></i> Preferences</a>
-                            <form method="post" action="{% url 'logout_view' %}">
-                                {% csrf_token %}
-                                <button type="submit" class="logout-btn">
-                                    <img src="{% static 'images/logout.png' %}" alt="Logout"> Logout
-                                </button>
-                            </form>
-                        </div>
-                    </div>
-                </div>
-            </header>            
-            <div id="content">
-                {% block content %}
-                <!-- Content will be injected here by child templates -->
-                {% endblock %}
-            </div>
-            <footer>
-                <nav>
-                    <a href="#">Blog</a>
-                    <a href="#" target="_blank">LinkedIn</a>
-                    <a href="#">About Us</a>
-                    <a href="#">Contact Us</a>
-                </nav>
-            </footer>
-        </main>
+    <div class="mobile-header">
+        <button id="menu-toggle" class="menu-toggle">
+            <i class='bx bx-menu'></i>
+        </button>
+        <span class="mobile-title">Ascend Investments</span>
     </div>
-    <script src="{% static 'js/main.js' %}"></script>
-    {% block extra_js %}{% endblock %}
+
+    <nav class="sidebar">
+        <div class="sidebar-header">
+            <div class="image-text">
+                <span class="image">
+                    <img src="{% static 'images/logo.png' %}" alt="Logo">
+                </span>
+                <div class="text logo-text">
+                    <span class="name">Ascend</span>
+                    <span class="profession">Investments</span>
+                </div>
+            </div>
+            <i class='bx bx-x close-btn' id="close-sidebar"></i>
+        </div>
+
+        <div class="menu-bar">
+            <div class="menu">
+                <li class="search-box">
+                    <i class='bx bx-search icon'></i>
+                    <input type="text" placeholder="Search Investments...">
+                </li>
+                <ul class="menu-links">
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-home-alt icon'></i>
+                            <span class="text nav-text">Dashboard</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-transfer-alt icon'></i>
+                            <span class="text nav-text">Forex Trading</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-dollar-circle icon'></i>
+                            <span class="text nav-text">Local Currency</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-bitcoin icon'></i>
+                            <span class="text nav-text">Crypto Investment</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-briefcase-alt-2 icon'></i>
+                            <span class="text nav-text">Portfolio</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-line-chart icon'></i>
+                            <span class="text nav-text">Market Analysis</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-bell icon'></i>
+                            <span class="text nav-text">Notifications</span>
+                        </a>
+                    </li>
+                    <li class="nav-link">
+                        <a href="#">
+                            <i class='bx bx-cog icon'></i>
+                            <span class="text nav-text">Settings</span>
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div class="bottom-content">
+                <li>
+                    <a href="{% url 'logout_view' %}">
+                        <i class='bx bx-log-out icon'></i>
+                        <span class="text nav-text">Logout</span>
+                    </a>
+                </li>
+                <li class="mode">
+                    <div class="sun-moon">
+                        <i class='bx bx-moon icon moon'></i>
+                        <i class='bx bx-sun icon sun'></i>
+                    </div>
+                    <span class="mode-text text">Dark mode</span>
+                    <div class="toggle-switch">
+                        <span class="switch"></span>
+                    </div>
+                </li>
+            </div>
+        </div>
+    </nav>
+
+    <section class="home">
+        <div class="text">{% block content %}Investment Dashboard{% endblock %}</div>
+    </section>
+
+    <script src="{% static 'js/script.js' %}"></script>
+    <script src="{% static 'js/dashboard.js' %}"></script> <!-- Dashboard-specific JS -->
 </body>
 </html>
