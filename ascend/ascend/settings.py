@@ -41,6 +41,7 @@ INSTALLED_APPS = [
     'rest_framework.authtoken',
     'accounts',
     'dashboard',
+    'settings',
     'rest_framework_simplejwt',
 ]
 

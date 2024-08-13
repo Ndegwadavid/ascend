@@ -22,4 +22,5 @@ urlpatterns = [
     path('dashboard/', include('dashboard.urls')),
     path('accounts/', include('accounts.urls')),  # For rendering templates
     path('api/accounts/', include('accounts.urls')),  # For API endpoints
+    path('settings/', include('settings.urls')),
 ]
